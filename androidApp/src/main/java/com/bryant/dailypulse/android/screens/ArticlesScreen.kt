@@ -31,6 +31,8 @@ import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.bryant.dailypulse.articles.Article
 import com.bryant.dailypulse.articles.ArticlesViewModel
+import com.google.accompanist.swiperefresh.SwipeRefresh
+import com.google.accompanist.swiperefresh.SwipeRefreshState
 import org.koin.androidx.compose.getViewModel
 
 @Composable
@@ -43,12 +45,10 @@ fun ArticlesScreen(
     Column {
         AppBar(onAboutButtonClick)
 
-        if (articlesState.value.loading)
-            Loader()
         if (articlesState.value.error != null)
             ErrorMessage(articlesState.value.error!!)
         if (articlesState.value.articles.isNotEmpty())
-            ArticlesListView(articlesState.value.articles)
+            ArticlesListView(articlesViewModel)
     }
 }
 
@@ -73,10 +73,15 @@ private fun AppBar(
 }
 
 @Composable
-fun ArticlesListView(articles: List<Article>) {
-    LazyColumn(modifier = Modifier.fillMaxSize()) {
-        items(articles) { article ->
-            ArticleItemView(article = article)
+fun ArticlesListView(viewModel: ArticlesViewModel) {
+    SwipeRefresh(
+        state = SwipeRefreshState(viewModel.articlesState.value.loading),
+        onRefresh = { viewModel.getArticles(true) },
+    ) {
+        LazyColumn(modifier = Modifier.fillMaxSize()) {
+            items(viewModel.articlesState.value.articles) { article ->
+                ArticleItemView(article = article)
+            }
         }
     }
 }
@@ -106,20 +111,6 @@ fun ArticleItemView(article: Article) {
             modifier = Modifier.align(Alignment.End),
         )
         Spacer(modifier = Modifier.height(4.dp))
-    }
-}
-
-@Composable
-fun Loader() {
-    Box(
-        modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center,
-    ) {
-        CircularProgressIndicator(
-            modifier = Modifier.width(64.dp),
-            color = MaterialTheme.colorScheme.surfaceVariant,
-            trackColor = MaterialTheme.colorScheme.secondary,
-        )
     }
 }
 
