@@ -89,7 +89,7 @@ struct ArticleItemView: View {
             Text(article.title)
                 .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                 .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
-            Text(article.description_)
+            Text(article.desc)
             Text(article.date)
                 .frame(maxWidth: .infinity, alignment: .trailing)
                 .foregroundStyle(.gray)

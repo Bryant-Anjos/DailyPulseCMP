@@ -8,7 +8,7 @@ data class ArticleRaw(
     @SerialName("title")
     val title: String,
     @SerialName("description")
-    val description: String?,
+    val desc: String?,
     @SerialName("publishedAt")
     val date: String,
     @SerialName("urlToImage")
