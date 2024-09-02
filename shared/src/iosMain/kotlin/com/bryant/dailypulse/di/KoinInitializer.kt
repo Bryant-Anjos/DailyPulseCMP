@@ -1,6 +1,6 @@
 package com.bryant.dailypulse.di
 
-import com.bryant.dailypulse.articles.ArticlesViewModel
+import com.bryant.dailypulse.articles.presentation.ArticlesViewModel
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 import org.koin.core.context.startKoin

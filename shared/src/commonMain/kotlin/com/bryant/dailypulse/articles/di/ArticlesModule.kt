@@ -1,10 +1,10 @@
 package com.bryant.dailypulse.articles.di
 
-import com.bryant.dailypulse.articles.ArticlesDataSource
-import com.bryant.dailypulse.articles.ArticlesRepository
-import com.bryant.dailypulse.articles.ArticlesService
-import com.bryant.dailypulse.articles.ArticlesUseCase
-import com.bryant.dailypulse.articles.ArticlesViewModel
+import com.bryant.dailypulse.articles.data.ArticlesDataSource
+import com.bryant.dailypulse.articles.data.ArticlesRepository
+import com.bryant.dailypulse.articles.data.ArticlesService
+import com.bryant.dailypulse.articles.application.ArticlesUseCase
+import com.bryant.dailypulse.articles.presentation.ArticlesViewModel
 import org.koin.dsl.module
 
 val articlesModule = module {

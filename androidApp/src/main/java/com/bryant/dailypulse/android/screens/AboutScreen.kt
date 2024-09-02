@@ -19,35 +19,19 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.bryant.dailypulse.Platform
+import com.bryant.dailypulse.android.ui.Toolbar
 
 @Composable
 fun AboutScreen(
     onUpButtonClick: () -> Unit,
 ) {
     Column {
-        Toolbar(onUpButtonClick)
+        Toolbar(
+            text = { Text("About Device") },
+            onUpButtonClick = onUpButtonClick,
+        )
         ContentView()
     }
-}
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-private fun Toolbar(
-    onUpButtonClick: () -> Unit,
-) {
-    TopAppBar(
-        title = {
-            Text(text = "About Device")
-        },
-        navigationIcon = {
-            IconButton(onClick = onUpButtonClick) {
-                Icon(
-                    imageVector = Icons.Default.ArrowBack,
-                    contentDescription = "Up Button",
-                )
-            }
-        }
-    )
 }
 
 @Composable

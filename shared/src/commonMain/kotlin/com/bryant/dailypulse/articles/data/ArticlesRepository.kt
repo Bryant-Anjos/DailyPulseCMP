@@ -1,4 +1,4 @@
-package com.bryant.dailypulse.articles
+package com.bryant.dailypulse.articles.data
 
 class ArticlesRepository(
     private val dataSource: ArticlesDataSource,

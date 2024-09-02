@@ -1,4 +1,4 @@
-package com.bryant.dailypulse.articles
+package com.bryant.dailypulse.articles.application
 
 data class Article(
     val title: String,

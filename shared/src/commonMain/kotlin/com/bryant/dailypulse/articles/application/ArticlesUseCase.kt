@@ -1,5 +1,7 @@
-package com.bryant.dailypulse.articles
+package com.bryant.dailypulse.articles.application
 
+import com.bryant.dailypulse.articles.data.ArticleRaw
+import com.bryant.dailypulse.articles.data.ArticlesRepository
 import kotlinx.datetime.Clock
 import kotlinx.datetime.Instant
 import kotlinx.datetime.TimeZone

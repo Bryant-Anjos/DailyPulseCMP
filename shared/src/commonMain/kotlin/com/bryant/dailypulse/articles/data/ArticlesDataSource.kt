@@ -1,4 +1,4 @@
-package com.bryant.dailypulse.articles
+package com.bryant.dailypulse.articles.data
 
 import bryant.dailypulse.db.DailyPulseDatabase
 
