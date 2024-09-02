@@ -12,6 +12,7 @@
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
 		5D0532FC2B8AB920006C90D5 /* AboutListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0532FB2B8AB920006C90D5 /* AboutListView.swift */; };
 		5D0532FE2B8AC93D006C90D5 /* AboutScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D0532FD2B8AC93D006C90D5 /* AboutScreen.swift */; };
+		5D21E51F2C8635D0003CF45A /* SourcesScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D21E51E2C8635D0003CF45A /* SourcesScreen.swift */; };
 		5D82AACB2B8C1FAE00D2F540 /* ArticlesScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D82AACA2B8C1FAE00D2F540 /* ArticlesScreen.swift */; };
 		5DADACE82C80F18C004973FF /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DADACE72C80F18C004973FF /* libsqlite3.tbd */; };
 		7555FF83242A565900829871 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* ContentView.swift */; };
@@ -36,6 +37,7 @@
 		2152FB032600AC8F00CF470E /* iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSApp.swift; sourceTree = "<group>"; };
 		5D0532FB2B8AB920006C90D5 /* AboutListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutListView.swift; sourceTree = "<group>"; };
 		5D0532FD2B8AC93D006C90D5 /* AboutScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutScreen.swift; sourceTree = "<group>"; };
+		5D21E51E2C8635D0003CF45A /* SourcesScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourcesScreen.swift; sourceTree = "<group>"; };
 		5D82AACA2B8C1FAE00D2F540 /* ArticlesScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticlesScreen.swift; sourceTree = "<group>"; };
 		5DADACE72C80F18C004973FF /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		7555FF7B242A565900829871 /* iosApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iosApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -69,6 +71,7 @@
 				5D0532FD2B8AC93D006C90D5 /* AboutScreen.swift */,
 				5D0532FB2B8AB920006C90D5 /* AboutListView.swift */,
 				5D82AACA2B8C1FAE00D2F540 /* ArticlesScreen.swift */,
+				5D21E51E2C8635D0003CF45A /* SourcesScreen.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -203,6 +206,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D21E51F2C8635D0003CF45A /* SourcesScreen.swift in Sources */,
 				5D82AACB2B8C1FAE00D2F540 /* ArticlesScreen.swift in Sources */,
 				5D0532FC2B8AB920006C90D5 /* AboutListView.swift in Sources */,
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
