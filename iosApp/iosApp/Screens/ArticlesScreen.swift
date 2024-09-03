@@ -31,7 +31,6 @@ extension ArticlesScreen {
     }
 }
 
-
 struct ArticlesScreen: View {
     @ObservedObject private(set) var viewModel: ArticlesViewModelWrapper
     

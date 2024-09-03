@@ -7,6 +7,7 @@ struct ContentView: View {
     
 	var body: some View {
         let articleScreen = ArticlesScreen(viewModel: .init())
+        let sourcesScreen = SourcesScreen(viewModel: .init())
         
         NavigationStack {
             articleScreen
@@ -29,7 +30,7 @@ struct ContentView: View {
                             .labelStyle(.titleAndIcon)
                     }
                     .popover(isPresented: $shouldOpenSources) {
-                        SourcesScreen()
+                        sourcesScreen
                     }
                 }
         }.refreshable {
