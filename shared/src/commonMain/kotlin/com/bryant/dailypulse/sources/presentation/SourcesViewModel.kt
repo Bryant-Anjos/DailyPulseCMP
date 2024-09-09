@@ -1,6 +1,7 @@
-package com.bryant.dailypulse.sources
+package com.bryant.dailypulse.sources.presentation
 
 import com.bryant.dailypulse.BaseViewModel
+import com.bryant.dailypulse.sources.application.SourcesUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -16,9 +17,10 @@ class SourcesViewModel(
         getSources()
     }
 
-    private fun getSources() {
+    fun getSources(forceFetch: Boolean = false) {
         scope.launch {
-            val fetchedSources = useCase.getSources()
+            _sourcesState.emit(SourcesState(loading = true, sources = _sourcesState.value.sources))
+            val fetchedSources = useCase.getSources(forceFetch)
             _sourcesState.emit(SourcesState(sources = fetchedSources))
         }
     }

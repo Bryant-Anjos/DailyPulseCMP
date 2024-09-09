@@ -15,3 +15,22 @@ FROM Articles;
 
 removeAllArticles:
 DELETE FROM Articles;
+
+CREATE TABLE Sources (
+    id TEXT NOT NULL,
+    name TEXT NOT NULL,
+    desc TEXT NOT NULL,
+    language TEXT NOT NULL,
+    country TEXT NOT NULL
+);
+
+insertSource:
+INSERT INTO Sources (id, name, desc, language, country)
+VALUES (?, ?, ?, ?, ?);
+
+selectAllSources:
+SELECT Sources.*
+FROM Sources;
+
+removeAllSources:
+DELETE FROM Sources;

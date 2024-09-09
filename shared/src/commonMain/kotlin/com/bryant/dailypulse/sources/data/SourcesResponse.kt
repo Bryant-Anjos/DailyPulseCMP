@@ -1,4 +1,4 @@
-package com.bryant.dailypulse.sources
+package com.bryant.dailypulse.sources.data
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

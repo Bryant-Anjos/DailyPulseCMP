@@ -12,13 +12,14 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.bryant.dailypulse.android.ui.ErrorMessage
 import com.bryant.dailypulse.android.ui.Loader
 import com.bryant.dailypulse.android.ui.Toolbar
-import com.bryant.dailypulse.sources.Source
-import com.bryant.dailypulse.sources.SourcesViewModel
+import com.bryant.dailypulse.sources.application.Source
+import com.bryant.dailypulse.sources.presentation.SourcesViewModel
+import com.google.accompanist.swiperefresh.SwipeRefresh
+import com.google.accompanist.swiperefresh.SwipeRefreshState
 import org.koin.androidx.compose.getViewModel
 
 @Composable
@@ -38,44 +39,44 @@ fun SourcesScreen(
         if (sourcesState.value.error != null)
             ErrorMessage(sourcesState.value.error!!)
         if (sourcesState.value.sources.isNotEmpty())
-            SourcesListView(sourcesState.value.sources)
+            SourcesListView(viewModel = sourcesViewModel)
     }
 }
 
 @Composable
-fun SourcesListView(sources: List<Source>) {
-    LazyColumn(modifier = Modifier.fillMaxSize()) {
-        items(sources, key = { source -> source.id }) { source ->
-            SourceItem(
-                title = source.name,
-                description = source.description,
-                localization = "${source.country} - ${source.language}",
-            )
+fun SourcesListView(viewModel: SourcesViewModel) {
+    SwipeRefresh(
+        state = SwipeRefreshState(viewModel.sourcesState.value.loading),
+        onRefresh = { viewModel.getSources(true) }
+    ) {
+        LazyColumn(modifier = Modifier.fillMaxSize()) {
+            items(
+                items = viewModel.sourcesState.value.sources,
+                key = { source -> source.id }
+            ) {
+                SourceItem(it)
+            }
         }
     }
 }
 
 @Composable
-fun SourceItem(
-    title: String,
-    description: String,
-    localization: String,
-) {
+fun SourceItem(source: Source) {
     Column(
         modifier = Modifier
             .padding(horizontal = 10.dp, vertical = 20.dp)
     ) {
         Text(
-            title,
+            source.name,
             style = MaterialTheme.typography.titleLarge,
             fontWeight = FontWeight.Bold,
         )
         Text(
-            description,
+            source.desc,
             style = MaterialTheme.typography.bodyMedium,
         )
         Text(
-            localization,
+            source.origin,
             style = MaterialTheme.typography.bodySmall,
             modifier = Modifier.align(Alignment.End),
         )

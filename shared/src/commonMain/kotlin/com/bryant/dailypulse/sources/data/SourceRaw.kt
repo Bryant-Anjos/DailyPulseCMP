@@ -1,4 +1,4 @@
-package com.bryant.dailypulse.sources
+package com.bryant.dailypulse.sources.data
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
@@ -10,11 +10,7 @@ data class SourceRaw(
     @SerialName("name")
     val name: String,
     @SerialName("description")
-    val description: String,
-    @SerialName("url")
-    val url: String,
-    @SerialName("category")
-    val category: String,
+    val desc: String,
     @SerialName("language")
     val language: String,
     @SerialName("country")

@@ -82,8 +82,8 @@ struct SourceItemView: View {
             Text(source.name)
                 .font(.title)
                 .fontWeight(.bold)
-            Text(source.description_)
-            Text("\(source.country) - \(source.language)")
+            Text(source.desc)
+            Text(source.origin)
                 .frame(maxWidth: .infinity, alignment: .trailing)
                 .foregroundStyle(.gray)
         }

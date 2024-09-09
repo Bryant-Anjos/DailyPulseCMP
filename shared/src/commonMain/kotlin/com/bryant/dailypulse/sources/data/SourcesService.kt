@@ -1,4 +1,4 @@
-package com.bryant.dailypulse.sources
+package com.bryant.dailypulse.sources.data
 
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
