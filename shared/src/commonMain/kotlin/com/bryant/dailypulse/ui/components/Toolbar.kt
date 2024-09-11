@@ -1,4 +1,4 @@
-package com.bryant.dailypulse.android.ui
+package com.bryant.dailypulse.android.ui.components
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack

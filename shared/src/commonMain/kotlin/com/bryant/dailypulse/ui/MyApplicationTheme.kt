@@ -1,4 +1,4 @@
-package com.bryant.dailypulse.android
+package com.bryant.dailypulse.ui
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.shape.RoundedCornerShape

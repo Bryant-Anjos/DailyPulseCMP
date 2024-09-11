@@ -1,4 +1,4 @@
-package com.bryant.dailypulse.android.ui
+package com.bryant.dailypulse.android.ui.components
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize

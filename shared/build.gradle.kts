@@ -41,6 +41,9 @@ kotlin {
             implementation(compose.components.resources)
             implementation(compose.material3)
             implementation(libs.compose.material)
+            implementation(libs.koin.compose)
+            implementation(libs.kamel.image)
+            implementation(libs.voyager.navigator)
         }
         androidMain.dependencies {
             implementation(libs.androidx.lifecycle.viewmodel.ktx)

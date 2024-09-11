@@ -1,4 +1,4 @@
-package com.bryant.dailypulse.android.screens
+package com.bryant.dailypulse.ui.screens
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -13,26 +13,35 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import com.bryant.dailypulse.android.ui.ErrorMessage
-import com.bryant.dailypulse.android.ui.Loader
-import com.bryant.dailypulse.android.ui.Toolbar
+import cafe.adriel.voyager.core.screen.Screen
+import cafe.adriel.voyager.navigator.LocalNavigator
+import cafe.adriel.voyager.navigator.currentOrThrow
+import com.bryant.dailypulse.android.ui.components.ErrorMessage
+import com.bryant.dailypulse.android.ui.components.Loader
+import com.bryant.dailypulse.android.ui.components.Toolbar
 import com.bryant.dailypulse.sources.application.Source
 import com.bryant.dailypulse.sources.presentation.SourcesViewModel
-import com.google.accompanist.swiperefresh.SwipeRefresh
-import com.google.accompanist.swiperefresh.SwipeRefreshState
-import org.koin.androidx.compose.getViewModel
+import com.bryant.dailypulse.ui.components.PullToRefresh
+import org.koin.compose.koinInject
+
+class SourcesScreen : Screen {
+    @Composable
+    override fun Content() {
+        SourcesScreenContent()
+    }
+}
 
 @Composable
-fun SourcesScreen(
-    onUpButtonClick: () -> Unit,
-    sourcesViewModel: SourcesViewModel = getViewModel(),
+fun SourcesScreenContent(
+    sourcesViewModel: SourcesViewModel = koinInject(),
 ) {
     val sourcesState = sourcesViewModel.sourcesState.collectAsState()
+    val navigator = LocalNavigator.currentOrThrow
 
     Column {
         Toolbar(
             text = { Text("Sources") },
-            onUpButtonClick = onUpButtonClick,
+            onUpButtonClick = { navigator.pop() },
         )
         if (sourcesState.value.loading)
             Loader()
@@ -45,9 +54,9 @@ fun SourcesScreen(
 
 @Composable
 fun SourcesListView(viewModel: SourcesViewModel) {
-    SwipeRefresh(
-        state = SwipeRefreshState(viewModel.sourcesState.value.loading),
-        onRefresh = { viewModel.getSources(true) }
+    PullToRefresh(
+        refreshing = viewModel.sourcesState.value.loading,
+        onRefresh = { viewModel.getSources(true) },
     ) {
         LazyColumn(modifier = Modifier.fillMaxSize()) {
             items(
