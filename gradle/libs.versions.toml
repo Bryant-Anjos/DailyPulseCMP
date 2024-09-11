@@ -1,13 +1,13 @@
 [versions]
-agp = "8.2.2"
+agp = "8.5.2"
 kotlin = "1.9.22"
-compose = "1.5.4"
-compose-compiler = "1.5.4"
+compose = "1.5.1"
+compose-compiler = "1.5.3"
 compose-material3 = "1.2.1"
-androidx-activityCompose = "1.8.0"
+androidx-activityCompose = "1.7.2"
 kotlinxCoroutinesCore = "1.7.3"
-lifecycleViewmodelKtx = "2.7.0"
-ktorClient = "2.3.9"
+lifecycleViewmodelKtx = "2.6.2"
+ktorClient = "2.3.5"
 kotlinxDatetime = "0.4.1"
 koin = "3.6.0-wasm-alpha2"
 sqlDelight = "2.0.1"
@@ -36,6 +36,9 @@ koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
 koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
 koin-compose = { module = "io.insert-koin:koin-compose", version.ref = "koinCompose" }
 
+voyager-navigator = { module = "cafe.adriel.voyager:voyager-navigator", version.ref = "voyagerVersion" }
+voyager-transitions = { module = "cafe.adriel.voyager:voyager-transitions", version.ref = "voyagerVersion" }
+
 sql-coroutines-extensions = { module = "app.cash.sqldelight:coroutines-extensions", version.ref = "sqlDelight" }
 sql-native-driver = { module = "app.cash.sqldelight:native-driver", version.ref = "sqlDelight" }
 sql-android-driver = { module = "app.cash.sqldelight:android-driver", version.ref = "sqlDelight" }
@@ -43,8 +46,6 @@ sql-android-driver = { module = "app.cash.sqldelight:android-driver", version.re
 compose-material = { module = "org.jetbrains.compose.material:material", version.ref = "composeMultiplatform" }
 
 kamel-image = { module = "media.kamel:kamel-image", version.ref = "kamelImage" }
-
-voyager-navigator = { module = "cafe.adriel.voyager:voyager-navigator", version.ref = "voyagerVersion" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

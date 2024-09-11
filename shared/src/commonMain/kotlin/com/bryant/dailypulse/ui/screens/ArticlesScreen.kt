@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.outlined.List
 import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material.icons.outlined.List
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -47,7 +46,7 @@ class ArticlesScreen : Screen {
 
 @Composable
 fun ArticlesScreenContent(
-    articlesViewModel: ArticlesViewModel = koinInject()
+    articlesViewModel: ArticlesViewModel = koinInject(),
 ) {
     val articlesState = articlesViewModel.articlesState.collectAsState()
 
@@ -75,7 +74,7 @@ private fun AppBar() {
                 navigator.push(SourcesScreen())
             }) {
                 Icon(
-                    imageVector = Icons.AutoMirrored.Outlined.List,
+                    imageVector = Icons.Outlined.List,
                     contentDescription = "Articles Source Button",
                 )
             }
@@ -110,7 +109,7 @@ fun ArticleItemView(article: Article) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(16.dp)
+            .padding(16.dp),
     ) {
         KamelImage(
             resource = asyncPainterResource(data = Url(article.imageUrl)),
@@ -121,7 +120,7 @@ fun ArticleItemView(article: Article) {
         Spacer(modifier = Modifier.height(4.dp))
         Text(
             text = article.title,
-            style = TextStyle(fontWeight = FontWeight.Bold, fontSize = 12.sp)
+            style = TextStyle(fontWeight = FontWeight.Bold, fontSize = 22.sp)
         )
         Spacer(modifier = Modifier.height(8.dp))
         Text(text = article.desc)
