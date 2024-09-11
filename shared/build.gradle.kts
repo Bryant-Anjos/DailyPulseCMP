@@ -44,6 +44,7 @@ kotlin {
             implementation(libs.koin.compose)
             implementation(libs.kamel.image)
             implementation(libs.voyager.navigator)
+            implementation(libs.voyager.transitions)
         }
         androidMain.dependencies {
             implementation(libs.androidx.lifecycle.viewmodel.ktx)
