@@ -2,23 +2,24 @@ package com.bryant.dailypulse.sources.data
 
 import bryant.dailypulse.db.DailyPulseDatabase
 
-class SourcesDataSource(private val database: DailyPulseDatabase) {
+class SourcesDataSource(private val database: DailyPulseDatabase?) {
     fun getAllSources(): List<SourceRaw> =
         database
-            .dailyPulseDatabaseQueries
-            .selectAllSources(::mapToSourceRaw)
-            .executeAsList()
+            ?.dailyPulseDatabaseQueries
+            ?.selectAllSources(::mapToSourceRaw)
+            ?.executeAsList()
+            ?: listOf()
 
     fun insertSources(sources: List<SourceRaw>) {
-        database.dailyPulseDatabaseQueries.transaction {
+        database?.dailyPulseDatabaseQueries?.transaction {
             sources.forEach { insertSource(it) }
         }
     }
 
-    fun clearSources() = database.dailyPulseDatabaseQueries.removeAllSources()
+    fun clearSources() = database?.dailyPulseDatabaseQueries?.removeAllSources()
 
     private fun insertSource(sourceRaw: SourceRaw) {
-        database.dailyPulseDatabaseQueries.insertSource(
+        database?.dailyPulseDatabaseQueries?.insertSource(
             sourceRaw.id,
             sourceRaw.name,
             sourceRaw.desc,

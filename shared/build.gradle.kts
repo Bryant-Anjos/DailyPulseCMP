@@ -28,6 +28,11 @@ kotlin {
 
     jvm("desktop")
 
+    js(IR) {
+        binaries.executable()
+        browser()
+    }
+
     sourceSets {
         commonMain.dependencies {
             implementation(libs.kotlinx.coroutines.core)
@@ -60,6 +65,9 @@ kotlin {
         commonTest.dependencies {
             implementation(libs.kotlin.test)
         }
+        jsMain.dependencies {
+            implementation(libs.ktor.client.js)
+        }
 
         val desktopMain by getting {
             dependencies {
@@ -88,4 +96,8 @@ sqldelight {
             packageName.set("bryant.dailypulse.db")
         }
     }
+}
+
+compose.experimental {
+    web.application {}
 }

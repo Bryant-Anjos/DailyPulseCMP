@@ -23,17 +23,19 @@ import com.bryant.dailypulse.sources.application.Source
 import com.bryant.dailypulse.sources.presentation.SourcesViewModel
 import com.bryant.dailypulse.ui.components.PullToRefresh
 import org.koin.compose.koinInject
+import org.koin.core.Koin
 
-class SourcesScreen : Screen {
+class SourcesScreen(val koin: Koin) : Screen {
     @Composable
     override fun Content() {
-        SourcesScreenContent()
+        SourcesScreenContent(koin)
     }
 }
 
 @Composable
 fun SourcesScreenContent(
-    sourcesViewModel: SourcesViewModel = koinInject(),
+    koin: Koin,
+    sourcesViewModel: SourcesViewModel = koin.get(),
 ) {
     val sourcesState = sourcesViewModel.sourcesState.collectAsState()
     val navigator = LocalNavigator.currentOrThrow

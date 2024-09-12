@@ -2,24 +2,25 @@ package com.bryant.dailypulse.articles.data
 
 import bryant.dailypulse.db.DailyPulseDatabase
 
-class ArticlesDataSource(private val database: DailyPulseDatabase) {
+class ArticlesDataSource(private val database: DailyPulseDatabase?) {
     fun getAllArticles(): List<ArticleRaw> = database
-        .dailyPulseDatabaseQueries
-        .selectAllArticles(::mapToArticlesRaw)
-        .executeAsList()
+        ?.dailyPulseDatabaseQueries
+        ?.selectAllArticles(::mapToArticlesRaw)
+        ?.executeAsList()
+        ?: listOf()
 
     fun insertArticles(articles: List<ArticleRaw>) {
-        database.dailyPulseDatabaseQueries.transaction {
+        database?.dailyPulseDatabaseQueries?.transaction {
             articles.forEach { articleRaw ->
                 insertArticle(articleRaw)
             }
         }
     }
 
-    fun clearArticles() = database.dailyPulseDatabaseQueries.removeAllArticles()
+    fun clearArticles() = database?.dailyPulseDatabaseQueries?.removeAllArticles()
 
     private fun insertArticle(articleRaw: ArticleRaw) {
-        database.dailyPulseDatabaseQueries.insertArticle(
+        database?.dailyPulseDatabaseQueries?.insertArticle(
             articleRaw.title,
             articleRaw.desc,
             articleRaw.date,

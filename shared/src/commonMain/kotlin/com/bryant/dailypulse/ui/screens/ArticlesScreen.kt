@@ -36,22 +36,24 @@ import io.kamel.image.KamelImage
 import io.kamel.image.asyncPainterResource
 import io.ktor.http.Url
 import org.koin.compose.koinInject
+import org.koin.core.Koin
 
-class ArticlesScreen : Screen {
+class ArticlesScreen(val koin: Koin) : Screen {
     @Composable
     override fun Content() {
-        ArticlesScreenContent()
+        ArticlesScreenContent(koin)
     }
 }
 
 @Composable
 fun ArticlesScreenContent(
-    articlesViewModel: ArticlesViewModel = koinInject(),
+    koin: Koin,
+    articlesViewModel: ArticlesViewModel = koin.get(),
 ) {
     val articlesState = articlesViewModel.articlesState.collectAsState()
 
     Column {
-        AppBar()
+        AppBar(koin)
 
         if (articlesState.value.error != null)
             ErrorMessage(articlesState.value.error!!)
@@ -62,7 +64,7 @@ fun ArticlesScreenContent(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun AppBar() {
+private fun AppBar(koin: Koin) {
     val navigator = LocalNavigator.currentOrThrow
 
     TopAppBar(
@@ -71,7 +73,7 @@ private fun AppBar() {
         },
         actions = {
             IconButton(onClick = {
-                navigator.push(SourcesScreen())
+                navigator.push(SourcesScreen(koin))
             }) {
                 Icon(
                     imageVector = Icons.Outlined.List,

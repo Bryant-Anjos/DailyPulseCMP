@@ -6,7 +6,7 @@ import org.koin.dsl.module
 import bryant.dailypulse.db.DailyPulseDatabase
 
 val databaseModule = module {
-    single<SqlDriver> { DatabaseDriverFactory().createDriver() }
+    single<SqlDriver> { DatabaseDriverFactory().createDriver()!! }
 
     single<DailyPulseDatabase> { DailyPulseDatabase(get()) }
 }

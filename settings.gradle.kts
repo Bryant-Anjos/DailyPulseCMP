@@ -20,3 +20,4 @@ rootProject.name = "Daily_Pulse"
 include(":androidApp")
 include(":shared")
 include(":desktop")
+include(":web")
